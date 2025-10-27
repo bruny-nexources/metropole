@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+	<record id="res_partner_view_form" model="ir.ui.view">
+		<field name="name">res.partner.view.form.inherit.product_client_restriction</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form" />
+		<field name="arch" type="xml">
+			<page name="internal_notes" position="before">
+				<page name="restricted_producs" string="Restricted Products">
+					<field name="restricted_product_ids">
+						<list>
+							<field name="display_name" />
+							<field name="categ_id" />
+							<field name="list_price" />
+							<field name="standard_price" />
+						</list>
+					</field>
+				</page>
+			</page>
+		</field>
+	</record>
+</odoo>
