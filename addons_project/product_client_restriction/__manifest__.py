@@ -5,8 +5,11 @@
     "website": "https://www.nexources.com",
     "license": "LGPL-3",
     "category": "Hidden",
-    "depends": ["sale"],
+    "depends": ["sale", "point_of_sale"],
     "data": ["views/res_partner_views.xml"],
     "auto_install": False,
     "application": False,
+    "assets": {
+        "point_of_sale._assets_pos": ["product_client_restriction/static/src/**/*"],
+    },
 }
