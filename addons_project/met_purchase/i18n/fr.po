@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* met_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e-20250801\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-30 08:23+0000\n"
+"PO-Revision-Date: 2025-10-30 08:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: met_purchase
+#: model:ir.model.fields,field_description:met_purchase.field_product_supplierinfo__product_code
+msgid "CIP"
+msgstr "CIP"
+
+#. module: met_purchase
+#: model:ir.model,name:met_purchase.model_product_supplierinfo
+msgid "Supplier Pricelist"
+msgstr "Liste de prix du fournisseur"
+
+#. module: met_purchase
+#: model:ir.model.fields,help:met_purchase.field_product_supplierinfo__product_code
+msgid ""
+"This vendor's product code will be used when printing a request for "
+"quotation. Keep empty to use the internal one."
+msgstr ""
+"Le code de produit du fournisseur sera utilisé lors de l'impression d'une "
+"demande de prix. Laissez le champ vide si vous voulez utiliser la référence "
+"interne."
