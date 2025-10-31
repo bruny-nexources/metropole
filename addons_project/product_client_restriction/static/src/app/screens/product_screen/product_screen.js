@@ -8,22 +8,25 @@ import { AlertDialog } from "@web/core/confirmation_dialog/confirmation_dialog";
 patch(ProductScreen.prototype, {
   async addProductToOrder(product) {
     const currentOrder = this.pos.get_order();
+
     const currentPartner = currentOrder.get_partner();
-    let restrictedProductIds = currentPartner.restricted_product_ids.find(
-      (p) => p.id === product.id
-    );
-    if (restrictedProductIds) {
-      this.dialog.add(AlertDialog, {
-        title: _t("Unsupported product"),
-        body: _t(
-          "Product %s does not supported by %s.",
-          product.display_name,
-          currentPartner.name
-        ),
-      });
-      return;
+    if (currentPartner) {
+      let restrictedProductIds = currentPartner.restricted_product_ids.find(
+        (p) => p.id === product.id
+      );
+      if (restrictedProductIds) {
+        this.dialog.add(AlertDialog, {
+          title: _t("Unsupported product"),
+          body: _t(
+            "Product %s does not supported by %s.",
+            product.display_name,
+            currentPartner.name
+          ),
+        });
+        return;
+      }
     }
 
-    await super.addProductToOrder(product);
+    return await super.addProductToOrder(product);
   },
 });
