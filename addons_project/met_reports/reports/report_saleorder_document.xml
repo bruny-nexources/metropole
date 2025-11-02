@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="report_saleorder_document_description_sale" inherit_id="sale.report_saleorder_document">
+    <template id="report_saleorder_document_description_product" inherit_id="sale.report_saleorder_document">
         <xpath expr="//td[@name='td_name']//span" position="replace">
-            <span t-esc="line.get_product_description()">/</span>
+            <span t-esc="line.get_product_description()" t-options="{'widget': 'text'}">/</span>
         </xpath>
     </template>
 

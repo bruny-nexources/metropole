@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_purchasequotation_document_description_product" inherit_id="purchase.report_purchasequotation_document">
+        <xpath expr="//td[@id='product']//span" position="replace">
+            <span t-esc="order_line.get_product_description()" t-options="{'widget': 'text'}">/</span>
+        </xpath>
+    </template>
+
+</odoo>
