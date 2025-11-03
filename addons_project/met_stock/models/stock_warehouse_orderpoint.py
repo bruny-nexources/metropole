@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api, Command
-from odoo.exceptions import UserError
+from odoo import models, Command
+
 
 class StockWarehouseOrderpoint(models.Model):
     _inherit = "stock.warehouse.orderpoint"
-
 
     def action_check_orderpoint_and_create_purchase(self):
         orderpoints = self.search(
             [
                 ("route_id", "=", 5),
-                ("qty_on_hand", "<", "product_min_qty"),
                 ("trigger", "=", "auto"),
             ]
         )
+        orderpoints = orderpoints.filtered(lambda o: o.qty_on_hand < o.product_min_qty)
         vals = {}
         for order in orderpoints:
             domain = [("product_tmpl_id", "=", order.product_id.product_tmpl_id.id)]
