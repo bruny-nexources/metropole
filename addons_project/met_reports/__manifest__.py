@@ -7,5 +7,10 @@
     "category": "Uncategorized",
     "version": "0.1",
     "depends": ["met_base", "account", "sale", "purchase"],
-    "data": ["reports/report_saleorder_document.xml"],
+    "data": [
+        "reports/report_saleorder_document.xml",
+        "reports/report_purchaseorder_document.xml",
+        "reports/report_invoice_document.xml",
+        "reports/report_purchasequotation_document.xml",
+    ],
 }
