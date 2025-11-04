@@ -1,16 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, Command
+from odoo import models, Command, fields
 
 
 class StockWarehouseOrderpoint(models.Model):
     _inherit = "stock.warehouse.orderpoint"
+
+    no_orderpoint = fields.Boolean(
+        related="product_id.product_tmpl_id.no_orderpoint",
+        store=True,
+        string="No orderpoint",
+    )
 
     def action_check_orderpoint_and_create_purchase(self):
         orderpoints = self.search(
             [
                 ("route_id", "=", 5),
                 ("trigger", "=", "auto"),
+                ("no_orderpoint", "=", False),
             ]
         )
         orderpoints = orderpoints.filtered(lambda o: o.qty_on_hand < o.product_min_qty)
@@ -40,5 +47,9 @@ class StockWarehouseOrderpoint(models.Model):
                         )
                     )
         for key, value in vals.items():
-            purchase_vals = {"partner_id": key.id, "order_line": value}
+            purchase_vals = {
+                "partner_id": key.id,
+                "is_orderpoint": True,
+                "order_line": value,
+            }
             self.env["purchase.order"].create(purchase_vals)

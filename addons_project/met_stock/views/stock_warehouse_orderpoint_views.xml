@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- View view_warehouse_orderpoint_tree_editable -->
+    <record id="view_warehouse_orderpoint_tree_editable_met_stock" model="ir.ui.view">
+        <field name="name">view.stock.warehouse.orderpoint.list</field>
+        <field name="model">stock.warehouse.orderpoint</field>
+        <field name="inherit_id" ref="stock.view_warehouse_orderpoint_tree_editable"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="no_orderpoint" column_invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

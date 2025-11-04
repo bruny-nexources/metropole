@@ -6,6 +6,11 @@
     "website": "https://www.nexources.com",
     "category": "Uncategorized",
     "version": "0.1",
-    "depends": ["met_base", "stock", "purchase"],
-    "data": ["data/ir_cron.xml"],
+    "depends": ["met_base", "stock", "purchase", "product"],
+    "data": [
+        "data/ir_cron.xml",
+        "views/product_template_views.xml",
+        "views/purchase_order_views.xml",
+        "views/stock_warehouse_orderpoint_views.xml"
+    ],
 }
