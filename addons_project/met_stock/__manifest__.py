@@ -11,6 +11,12 @@
         "data/ir_cron.xml",
         "views/product_template_views.xml",
         "views/purchase_order_views.xml",
-        "views/stock_warehouse_orderpoint_views.xml"
+        "views/stock_warehouse_orderpoint_views.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "met_stock/static/src/js/list_controller.js",
+            "met_stock/static/src/xml/list_controller.xml",
+        ],
+    },
 }

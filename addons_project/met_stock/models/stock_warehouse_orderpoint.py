@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, Command, fields
+from odoo import models, Command, fields, api
 
 
 class StockWarehouseOrderpoint(models.Model):
@@ -11,6 +11,17 @@ class StockWarehouseOrderpoint(models.Model):
         store=True,
         string="No orderpoint",
     )
+    qty_to_purchase_order = fields.Float(
+        string="To purchase order",
+        compute="_compute_qty_to_purchase_order",
+        store=True,
+    )
+
+    @api.depends("product_max_qty", "qty_on_hand")
+    def _compute_qty_to_purchase_order(self):
+        for orderpoint in self:
+            qty = orderpoint.product_max_qty - orderpoint.qty_on_hand
+            orderpoint.qty_to_purchase_order = qty if qty > 0 else 0
 
     def action_check_orderpoint_and_create_purchase(self):
         orderpoints = self.search(
@@ -33,7 +44,7 @@ class StockWarehouseOrderpoint(models.Model):
                         Command.create(
                             {
                                 "product_id": order.product_id.id,
-                                "product_qty": order.qty_to_order,
+                                "product_qty": order.qty_to_purchase_order,
                             }
                         )
                     ]
@@ -42,7 +53,7 @@ class StockWarehouseOrderpoint(models.Model):
                         Command.create(
                             {
                                 "product_id": order.product_id.id,
-                                "product_qty": order.qty_to_order,
+                                "product_qty": order.qty_to_purchase_order,
                             }
                         )
                     )

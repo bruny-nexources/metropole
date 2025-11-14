@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0+e-20250801\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-04 11:03+0000\n"
-"PO-Revision-Date: 2025-11-04 11:03+0000\n"
+"POT-Creation-Date: 2025-11-14 13:45+0000\n"
+"PO-Revision-Date: 2025-11-14 13:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -43,6 +43,22 @@ msgid "Purchase Order"
 msgstr "Bon de commande fournisseur"
 
 #. module: met_stock
+#. odoo-javascript
+#: code:addons/met_stock/static/src/xml/list_controller.xml:0
+msgid "Restock"
+msgstr "Réapprovisionner"
+
+#. module: met_stock
 #: model:ir.actions.server,name:met_stock.ir_cron_auto_check_stock_warehouse_orderpoint_ir_actions_server
 msgid "Réassort"
-msgstr "Réassort"
+msgstr ""
+
+#. module: met_stock
+#: model_terms:ir.ui.view,arch_db:met_stock.view_warehouse_orderpoint_tree_editable_met_stock
+msgid "To Purchase"
+msgstr "Commande achat"
+
+#. module: met_stock
+#: model:ir.model.fields,field_description:met_stock.field_stock_warehouse_orderpoint__qty_to_purchase_order
+msgid "To purchase order"
+msgstr "À commander"
